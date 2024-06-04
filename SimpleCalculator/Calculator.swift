@@ -18,6 +18,8 @@ class Calculator {
             return firstNum * secondNum
         case "/":
             return firstNum / secondNum
+        case "%":
+            return firstNum % secondNum
         default:
             print("+ - * / 중에 입력해주세요")
             return 0
