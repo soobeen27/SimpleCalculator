@@ -33,20 +33,20 @@ calc()
 
 func calc() {
     while true {
-        print("첫번째 숫자를 입력해주세요:")
+        print("첫번째 숫자를 입력해주세요:", terminator: "")
         guard let firstLine = readLine() else { return }
         guard let firstNum = Int(firstLine) else
         {
             print("다시 입력해주세요")
             continue
         }
-        print("수식을 입력해주세요 ex(+,-,*,/,%):")
+        print("수식을 입력해주세요 ex(+,-,*,/,%):", terminator: "")
         guard let seconLine = readLine() else { return }
         if seconLine != "+" && seconLine != "-" && seconLine != "*" && seconLine != "/" && seconLine != "%" {
             print("다시 입력해주세요")
             continue
         }
-        print("두번째 숫자를 입력해주세요:")
+        print("두번째 숫자를 입력해주세요:", terminator: "")
         guard let thirdLine = readLine() else { return }
         guard let thirdNum = Int(thirdLine) else
         {
