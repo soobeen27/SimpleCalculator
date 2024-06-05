@@ -15,19 +15,15 @@ class Calculator {
     let divide = DivideOperation()
 
     func getInfo(from expression: String) -> (numArr: [Int], oper: String){
-        var numArr: [Int] = []
         let oper = ["+","-","*","/","%"]
-        var info: (numArr: [Int], oper: String)
         for sep in oper {
             if expression.contains(sep) {
-                numArr = expression.components(separatedBy: sep).map
+                var numArr = expression.components(separatedBy: sep).map
                 {(temp: String) -> Int in
                     guard let num = Int(temp) else { return 0 }
                     return num
                 }
-                info.numArr = numArr
-                info.oper = sep
-                return info
+                return (numArr, sep)
             }
         }
         return ([0,0], "Error")

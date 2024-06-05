@@ -23,8 +23,7 @@ print(
 let calculator = Calculator()
 while true {
     print("입력: ",terminator: "")
-    let input = readLine()
-    guard let input = input else 
+    guard let input = readLine() else
     {
         print("다시 입력해주세요!")
         continue
