@@ -37,13 +37,13 @@ class Calculator {
     func calc(info: (numArr: [Int], oper: String)) -> Int {
         switch info.oper {
         case "+":
-            return add.add(n: info.numArr[0], n2: info.numArr[1])
+            return add.operation(n: info.numArr[0], n2: info.numArr[1])
         case "-":
-            return substract.substract(n: info.numArr[0], n2: info.numArr[1])
+            return substract.operation(n: info.numArr[0], n2: info.numArr[1])
         case "*":
-            return multiple.multiple(n: info.numArr[0], n2: info.numArr[1])
+            return multiple.operation(n: info.numArr[0], n2: info.numArr[1])
         case "/":
-            return divide.divide(n: info.numArr[0], n2: info.numArr[1])
+            return divide.operation(n: info.numArr[0], n2: info.numArr[1])
         case "%":
             return divide.remain(n: info.numArr[0], n2: info.numArr[1])
         default:
@@ -53,26 +53,32 @@ class Calculator {
     }
 }
 
-class AddOperation {
-    func add(n: Int, n2: Int) -> Int{
+class AddOperation: AbstractOperation {
+    override func operation(n: Int, n2: Int) -> Int {
         return n + n2
     }
 }
-class SubstractOperation {
-    func substract(n: Int, n2: Int) -> Int{
+class SubstractOperation: AbstractOperation {
+    override func operation(n: Int, n2: Int) -> Int {
         return n - n2
     }
 }
-class MultiplyOperation {
-    func multiple(n: Int, n2: Int) -> Int{
+class MultiplyOperation: AbstractOperation {
+    override func operation(n: Int, n2: Int) -> Int {
         return n * n2
     }
 }
-class DivideOperation {
-    func divide(n: Int, n2: Int) -> Int{
+class DivideOperation: AbstractOperation {
+    override func operation(n: Int, n2: Int) -> Int {
         return n / n2
     }
     func remain(n: Int, n2: Int) -> Int {
         return n % n2
+    }
+}
+
+class AbstractOperation {
+    func operation(n: Int, n2: Int) -> Int {
+        return 0
     }
 }
