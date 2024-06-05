@@ -33,12 +33,9 @@ while true {
         break
     }
     let info = calculator.getInfo(from: input)
-    if info.num.count != 2 {
+    if info.numArr.count != 2 {
         print("다시 입력해주세요!")
         continue
     }
     print(calculator.calc(info: info))
 }
-
-
-
