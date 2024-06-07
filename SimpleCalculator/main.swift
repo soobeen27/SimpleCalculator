@@ -20,7 +20,13 @@ print(
 """
 )
 
-let calculator = Calculator()
+let calculator = Calculator(operations: [
+    "+" : AddOperation(),
+    "-" : SubstractOperation(),
+    "*" : MultiplyOperation(),
+    "/" : DivideOperation(),
+    "%" : ModOperation()
+])
 while true {
     print("입력: ",terminator: "")
     guard let input = readLine() else

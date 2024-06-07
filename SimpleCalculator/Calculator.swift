@@ -9,11 +9,11 @@ import Foundation
 
 
 class Calculator {
-    let add = AddOperation()
-    let substract = SubstractOperation()
-    let multiple = MultiplyOperation()
-    let divide = DivideOperation()
-
+    var operations: [String: AbstractOperation]
+    
+    init(operations: [String: AbstractOperation]) {
+        self.operations = operations
+    }
     func getInfo(from expression: String) -> (numArr: [Int], oper: String){
         let oper = ["+","-","*","/","%"]
         for sep in oper {
@@ -29,23 +29,13 @@ class Calculator {
         return ([0,0], "Error")
     }
     
-    
     func calc(info: (numArr: [Int], oper: String)) -> Int {
-        switch info.oper {
-        case "+":
-            return add.operation(n: info.numArr[0], n2: info.numArr[1])
-        case "-":
-            return substract.operation(n: info.numArr[0], n2: info.numArr[1])
-        case "*":
-            return multiple.operation(n: info.numArr[0], n2: info.numArr[1])
-        case "/":
-            return divide.operation(n: info.numArr[0], n2: info.numArr[1])
-        case "%":
-            return divide.remain(n: info.numArr[0], n2: info.numArr[1])
-        default:
+        guard let operation = operations[info.oper] else {
             print("+, -, *, /, % 중에 입력해주세요")
             return 0
         }
+        
+        return operation.operation(n: info.numArr[0], n2: info.numArr[1])
     }
 }
 
@@ -68,7 +58,11 @@ class DivideOperation: AbstractOperation {
     override func operation(n: Int, n2: Int) -> Int {
         return n / n2
     }
-    func remain(n: Int, n2: Int) -> Int {
+    
+}
+
+class ModOperation: AbstractOperation {
+    override func operation(n: Int, n2: Int) -> Int {
         return n % n2
     }
 }
