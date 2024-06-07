@@ -31,15 +31,15 @@ while true {
     print("입력: ",terminator: "")
     guard let input = readLine() else
     {
-        print("다시 입력해주세요!")
+        print(messages.reinput)
         continue
     }
-    if input == "stop" {
+    if input == messages.exitCmd {
         break
     }
     let info = calculator.getInfo(from: input)
-    if info.numArr.count != 2 {
-        print("다시 입력해주세요!")
+    if info.numArr.count != 2 && info.oper != messages.error{
+        print(messages.reinput)
         continue
     }
     print(calculator.calc(info: info))
