@@ -18,7 +18,7 @@ class Calculator {
         let oper = ["+","-","*","/","%"]
         for sep in oper {
             if expression.contains(sep) {
-                var numArr = expression.components(separatedBy: sep).map
+                let numArr = expression.components(separatedBy: sep).map
                 {(temp: String) -> Int in
                     guard let num = Int(temp) else { return 0 }
                     return num
